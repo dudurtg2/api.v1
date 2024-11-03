@@ -6,8 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,6 +31,9 @@ public class Funcionarios {
     @Column(name = "senha")
     private String senha;
 
+    @Column(name = "cpf")
+    private String cpf;
+
     @Column(name = "oab")
     private String oab;
 
@@ -41,7 +44,7 @@ public class Funcionarios {
     public Funcionarios() {
     }
 
-    public Funcionarios(int id, String nome, String telefone, String email, String senha, Perfil Perfil, String oab) {
+    public Funcionarios(int id, String nome, String telefone, String email, String senha, Perfil Perfil, String oab, String cpf) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
@@ -49,7 +52,17 @@ public class Funcionarios {
         this.senha = senha;
         this.perfil = Perfil;
         this.oab = oab;
+        this.cpf = cpf;
     
+    }
+
+
+    public String getCpf() {
+        return this.cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getOab() {

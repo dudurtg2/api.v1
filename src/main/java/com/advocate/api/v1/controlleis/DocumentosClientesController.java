@@ -46,6 +46,7 @@ public class DocumentosClientesController {
         documentosClientes.setLinkRg(documentosCliente.getLinkRg());
         documentosClientes.setLinkResidencia(documentosCliente.getLinkResidencia());
         documentosClientes.setLinkEstadoCivil(documentosCliente.getLinkEstadoCivil());
+        documentosClientes.setLinkProvas(documentosCliente.getLinkProvas());
         return new ResponseEntity<DocumentosClientes>(this.documentosClientesRepository.save(documentosClientes), HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")

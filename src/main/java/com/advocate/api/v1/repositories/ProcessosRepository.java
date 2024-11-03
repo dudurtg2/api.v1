@@ -9,4 +9,5 @@ import com.advocate.api.v1.entities.Processos;
 @Repository
 public interface ProcessosRepository extends JpaRepository<Processos, Integer> {
     public Processos findById(int id);
+    public Processos findByCodigo(String data);
 }

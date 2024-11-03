@@ -59,6 +59,7 @@ public class DocumentoProcessosController {
         documentoProcesso.setTipo(documentoProcessos.getTipo());
         documentoProcesso.setStatus(documentoProcessos.getStatus());
         documentoProcesso.setDescrisao(documentoProcessos.getDescrisao());
+        documentoProcesso.setDocumentosClientes(documentoProcessos.getDocumentosClientes());
         return new ResponseEntity<DocumentoProcessos>(this.documentoProcessosRepository.save(documentoProcesso), HttpStatus.OK);
     }
 }   

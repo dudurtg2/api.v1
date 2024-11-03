@@ -17,6 +17,9 @@ public class Processos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "codigo")
+    private String codigo;
+
     @Column(name = "data")
     private String data;
 
@@ -31,16 +34,21 @@ public class Processos {
     @JoinColumn(name = "clientes_id")
     private Clientes clientes;
 
+    @ManyToOne
+    @JoinColumn(name = "documentoProcessos_id")
+    private DocumentoProcessos documentoProcessos;
 
     public Processos() {
     }
 
-    public Processos(int id, String data, String hora, Funcionarios funcionarios, Clientes clientes) {
+    public Processos(int id, String data, String hora, Funcionarios funcionarios, Clientes clientes, DocumentoProcessos documentoProcessos, String codigo) {
         this.id = id;
         this.data = data;
         this.hora = hora;
         this.funcionarios = funcionarios;
         this.clientes = clientes;
+        this.documentoProcessos = documentoProcessos;
+        this.codigo = codigo;
     }
 
     public int getId() {
@@ -81,6 +89,22 @@ public class Processos {
 
     public void setClientes(Clientes clientes) {
         this.clientes = clientes;
+    }
+
+    public DocumentoProcessos getDocumentoProcessos() {
+        return documentoProcessos;
+    }
+
+    public void setDocumentoProcessos(DocumentoProcessos documentoProcessos) {
+        this.documentoProcessos = documentoProcessos;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     

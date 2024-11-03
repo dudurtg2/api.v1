@@ -1,5 +1,7 @@
 package com.advocate.api.v1.controlleis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,9 +42,9 @@ public class PerfisController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<Iterable<Perfil>> findAll() {
-        Iterable<Perfil> perfis = this.perfisRepository.findAll();
-        return new ResponseEntity<Iterable<Perfil>>(perfis, HttpStatus.OK);
+    public ResponseEntity<List<Perfil>> findAll() {
+        List<Perfil> perfis = this.perfisRepository.findAll();
+        return new ResponseEntity<List<Perfil>>(perfis, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

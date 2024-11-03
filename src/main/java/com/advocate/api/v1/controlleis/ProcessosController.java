@@ -33,6 +33,13 @@ public class ProcessosController {
         return new ResponseEntity<Processos>(processos, HttpStatus.OK);
     }
 
+    @GetMapping("/findByCodigo/{id}")
+    public ResponseEntity<Processos> findById(@PathVariable String id) {
+        Processos processos = this.processosRepository.findByCodigo(id);
+
+        return new ResponseEntity<Processos>(processos, HttpStatus.OK);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<Processos> save(@RequestBody Processos processo) {
         Processos processos = this.processosRepository.save(processo);
@@ -58,6 +65,8 @@ public class ProcessosController {
         processos.setData(processo.getData());
         processos.setFuncionarios(processo.getFuncionarios());
         processos.setClientes(processo.getClientes());
+        processos.setDocumentoProcessos(processo.getDocumentoProcessos());
+        processos.setCodigo(processo.getCodigo());
         return new ResponseEntity<Processos>(this.processosRepository.save(processos), HttpStatus.OK);
     }
 }

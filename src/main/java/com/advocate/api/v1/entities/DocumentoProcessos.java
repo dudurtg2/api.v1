@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,16 +26,20 @@ public class DocumentoProcessos {
     @Column(name = "descricao")
     private String descrisao;
 
+    @ManyToOne
+    @JoinColumn(name = "DocumentosClientes_id")
+    private DocumentosClientes documentosClientes;
 
     public DocumentoProcessos() {
 
     }
     
-    public DocumentoProcessos(int id, String tipo, String status, String descrisao) {
+    public DocumentoProcessos(int id, String tipo, String status, String descrisao, DocumentosClientes documentosClientes) {
         this.id = id;
         this.tipo = tipo;
         this.status = status;
         this.descrisao = descrisao;
+        this.documentosClientes = documentosClientes;
     }
 
     public int getId() {
@@ -66,6 +72,14 @@ public class DocumentoProcessos {
 
     public void setDescrisao(String descrisao) {
         this.descrisao = descrisao;
+    }
+
+    public DocumentosClientes getDocumentosClientes() {
+        return documentosClientes;
+    }
+
+    public void setDocumentosClientes(DocumentosClientes documentosClientes) {
+        this.documentosClientes = documentosClientes;
     }
 
 

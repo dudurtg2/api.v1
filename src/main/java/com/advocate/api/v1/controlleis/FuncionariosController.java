@@ -1,5 +1,7 @@
 package com.advocate.api.v1.controlleis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +46,11 @@ public class FuncionariosController {
         return new ResponseEntity<HttpStatus>(HttpStatus.OK);
     }
 
+    @GetMapping("/findAll")
+    public ResponseEntity<List<Funcionarios>> findAll() {
+        List<Funcionarios> funcionarios = this.funcionariosRepository.findAll();
+        return new ResponseEntity<List<Funcionarios>>(funcionarios, HttpStatus.OK);
+    }
     @PutMapping("/update/{id}")
     public ResponseEntity<Funcionarios> update(@PathVariable int id, @RequestBody Funcionarios funcionario) {
         Funcionarios funcionarios = this.funcionariosRepository.findById(id);

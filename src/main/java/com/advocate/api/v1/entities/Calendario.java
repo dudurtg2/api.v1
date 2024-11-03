@@ -21,8 +21,11 @@ public class Calendario {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "data")
-    private String data;
+    @Column(name = "dataInicio")
+    private String dataInicio;
+
+    @Column(name = "dataFim")
+    private String dataFim;
 
     @Column(name = "descrisao")
     private String descrisao;
@@ -38,13 +41,23 @@ public class Calendario {
     public Calendario() {
     }
 
-    public Calendario(int id, String nome, String data, String descrisao, String alerta, Funcionarios funcionarios) {
+    public Calendario(int id, String nome, String dataInicio, String descrisao, String alerta, Funcionarios funcionarios, String dataFim) {
         this.id = id;
         this.nome = nome;
-        this.data = data;
+        this.dataInicio = dataInicio;
         this.descrisao = descrisao;
         this.alerta = alerta;
         this.funcionarios = funcionarios;
+        this.dataFim = dataFim;
+    }
+
+
+    public String getDataFim() {
+        return this.dataFim;
+    }
+
+    public void setDataFim(String dataFim) {
+        this.dataFim = dataFim;
     }
 
     public int getId() {
@@ -63,12 +76,12 @@ public class Calendario {
         this.nome = nome;
     }
 
-    public String getData() {
-        return this.data;
+    public String getDataInicio() {
+        return this.dataInicio;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
     public String getDescrisao() {

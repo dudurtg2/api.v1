@@ -59,7 +59,8 @@ public class CalendarioController {
         Calendario calendarios = this.calendarioRepository.findById(id);
         calendarios.setNome(calendario.getNome());
         calendarios.setDescrisao(calendario.getDescrisao());
-        calendarios.setData(calendario.getData());
+        calendarios.setDataInicio(calendario.getDataInicio());
+        calendarios.setDataFim(calendario.getDataFim());
         calendarios.setAlerta(calendario.getAlerta());
         calendarios.setFuncionarios(calendario.getFuncionarios());
         return new ResponseEntity<Calendario>(this.calendarioRepository.save(calendarios), HttpStatus.OK);

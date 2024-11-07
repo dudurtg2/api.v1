@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -68,5 +69,13 @@ public class ClientesController {
         clientes.setTelefoneFixo(cliente.getTelefoneFixo());
         
         return new ResponseEntity<Clientes>(this.clientesRepository.save(clientes), HttpStatus.OK);
+    }
+
+    @GetMapping("/findByNameLike/{name}")
+    public ResponseEntity<List<Clientes>> findByNameLike(@PathVariable String name) {
+        String namePattern = "%" + name + "%";
+
+        List<Clientes> clientes = this.clientesRepository.findByNomeLike(namePattern);
+        return new ResponseEntity<List<Clientes>>(clientes, HttpStatus.OK);
     }
 }

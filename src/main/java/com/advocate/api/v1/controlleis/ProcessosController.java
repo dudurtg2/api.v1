@@ -1,5 +1,7 @@
 package com.advocate.api.v1.controlleis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,9 +49,9 @@ public class ProcessosController {
     }
     
     @GetMapping("/findAll")
-    public ResponseEntity<Iterable<Processos>> findAll() {
-        Iterable<Processos> processos = this.processosRepository.findAll();
-        return new ResponseEntity<Iterable<Processos>>(processos, HttpStatus.OK);
+    public ResponseEntity<List<Processos>> findAll() {
+        List<Processos> processos = this.processosRepository.findAll();
+        return new ResponseEntity<List<Processos>>(processos, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -68,5 +70,12 @@ public class ProcessosController {
         processos.setDocumentoProcessos(processo.getDocumentoProcessos());
         processos.setCodigo(processo.getCodigo());
         return new ResponseEntity<Processos>(this.processosRepository.save(processos), HttpStatus.OK);
+    }
+
+    @GetMapping("/findByClientesNomeLike/{name}")
+    public ResponseEntity<List<Processos>> findByClientesNomeLike(@PathVariable String name) {
+        String namePattern = "%" + name + "%";
+        List<Processos> processos = this.processosRepository.findByClientesNomeLike(namePattern);
+        return new ResponseEntity<List<Processos>>(processos, HttpStatus.OK);
     }
 }

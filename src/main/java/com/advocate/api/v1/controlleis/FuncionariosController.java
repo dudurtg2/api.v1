@@ -62,4 +62,10 @@ public class FuncionariosController {
         funcionarios.setCpf(funcionario.getCpf());
         return new ResponseEntity<Funcionarios>(this.funcionariosRepository.save(funcionarios), HttpStatus.OK);
     }
+
+    @GetMapping("/findByEmail/{email}")
+    public ResponseEntity<Funcionarios> findByEmail(@PathVariable String email) {
+        Funcionarios funcionarios = this.funcionariosRepository.findByEmail(email);
+        return new ResponseEntity<Funcionarios>(funcionarios, HttpStatus.OK);
+    }
 }
